@@ -103,8 +103,8 @@
                     <ul class="menu">
                         
                         <li role="presentation" class="text-center">
-                            <a href="/"><i class="fa "></i>
-                                Home</a>
+                            <a href="https://Liujinsheng.gihub.io"><i class="fa "></i>
+                                博客首页</a>
                         </li>
                         
                     </ul>
@@ -173,6 +173,8 @@ Vuex安装 Vuex
                 搜索</button>
             
             
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Google Search"><button type="submit" class="search-form-submit">谷歌搜索</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+            
         </div>
         <div id="result-wrap" class="hide">
             <div id="search-result"></div>
@@ -187,19 +189,6 @@ Vuex安装 Vuex
                 </div>
             </template>
         </div>
-    </div>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        公告
-    </h3>
-    <div class="notification">
-        <p>
-  
-</p>
     </div>
 </div>
 
@@ -227,14 +216,6 @@ Vuex安装 Vuex
             <i class="weixin fa fa-weixin"></i>
         </a>
         
-        <a href="/" rel="external nofollow" title="QQ群" target="_blank">
-            <i class="users fa fa-users"></i>
-        </a>
-        
-        <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
-            <i class="feed fa fa-feed"></i>
-        </a>
-        
     </div>
 </div>
 
@@ -257,7 +238,9 @@ Vuex安装 Vuex
     </h3>
     <div class="content tag-cloud">
         
-        <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a>
+        <canvas width="300" height="300" id="tag-cloud-3d">
+            <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a>
+        </canvas>
         
     </div>
 </div>
@@ -272,6 +255,9 @@ Vuex安装 Vuex
         
         <a href="https://hexo.io/zh-cn/" class="fa" target="_blank">
             Hexo官网</a>
+        
+        <a href="https://gogle.com/" class="fa" target="_blank">
+            Gogle</a>
         
     </div>
 </div>
@@ -298,6 +284,16 @@ Vuex安装 Vuex
             <div class="col-sm-12">
                 <div class="busuanzi">
     
+    Total:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    Visitors:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
 </div>
             </div>
             <div class="col-sm-12">
@@ -318,6 +314,30 @@ Vuex安装 Vuex
 <script src="/js/search.js?rev=@@hash"></script>
 
 
+<script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+<script>
+var tagOption = {
+    textColour: '#444', // 字体颜色
+    outlineMethod: 'block', // 选中模式
+    outlineColour: '#FFDAB9', // 选中模式的颜色
+    interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+    textHeight: 13,
+    outlineRadius: 3,
+    freezeActive: true || '', // 选中的标签是否继续滚动
+    frontSelect: true || '', // 不选标签云后部的标签
+    initial: [0.1, -0.1],
+    depth: 0.5,
+    decel: 0.95,
+    maxSpeed: 0.03,
+    reverse: true || '', // 是否反向触发
+    fadeIn: 500, // 进入动画时间
+    wheelZoom: true || '' // 是否启用鼠标滚轮
+}
+TagCanvas.Start('tag-cloud-3d', '', tagOption);
+</script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <script src="/js/app.js?rev=@@hash"></script>
 </body>

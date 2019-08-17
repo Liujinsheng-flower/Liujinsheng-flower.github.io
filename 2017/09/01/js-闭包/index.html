@@ -104,8 +104,8 @@
                     <ul class="menu">
                         
                         <li role="presentation" class="text-center">
-                            <a href="/"><i class="fa "></i>
-                                Home</a>
+                            <a href="https://Liujinsheng.gihub.io"><i class="fa "></i>
+                                博客首页</a>
                         </li>
                         
                     </ul>
@@ -151,15 +151,14 @@
             2017/09/01</span>
     </span>
     
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
     
 </div>
         
-        
-        <p class="fa fa-exclamation-triangle warning">
-            本文于<strong>
-                715</strong>
-            天之前发表，文中内容可能已经过时。
-        </p>
         
     </div>
     
@@ -258,6 +257,16 @@ new Valine({
             <div class="col-sm-12">
                 <div class="busuanzi">
     
+    Total:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    Visitors:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
 </div>
             </div>
             <div class="col-sm-12">
@@ -276,6 +285,30 @@ new Valine({
 </div>
 
 
+<script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+<script>
+var tagOption = {
+    textColour: '#444', // 字体颜色
+    outlineMethod: 'block', // 选中模式
+    outlineColour: '#FFDAB9', // 选中模式的颜色
+    interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+    textHeight: 13,
+    outlineRadius: 3,
+    freezeActive: true || '', // 选中的标签是否继续滚动
+    frontSelect: true || '', // 不选标签云后部的标签
+    initial: [0.1, -0.1],
+    depth: 0.5,
+    decel: 0.95,
+    maxSpeed: 0.03,
+    reverse: true || '', // 是否反向触发
+    fadeIn: 500, // 进入动画时间
+    wheelZoom: true || '' // 是否启用鼠标滚轮
+}
+TagCanvas.Start('tag-cloud-3d', '', tagOption);
+</script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <script src="/js/app.js?rev=@@hash"></script>
 </body>
