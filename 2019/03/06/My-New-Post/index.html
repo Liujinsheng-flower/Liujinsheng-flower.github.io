@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="redux">
+
+
+<meta name="description" content="最近开发被要求使用react+redux，react作为当前主流框架之一，作为一名前端来说掌握react也是很有必要的哦！！
+今天主要是记录一下学习Redux的使用redux数据是单项流动的，视...">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    记录一次Redux的使用 |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/avator.jpg">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='John Doe'>
+            <img src="/img/avator.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+          
+            <h2>
+                前端从未如此有趣
+            </h2>
+          
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                Home</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="记录一次Redux的使用">
+            
+            记录一次Redux的使用
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/redux/">redux</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/03/06</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>最近开发被要求使用react+redux，react作为当前主流框架之一，作为一名前端来说掌握react也是很有必要的哦！！</p>
+<h2 id="今天主要是记录一下学习Redux的使用"><a href="#今天主要是记录一下学习Redux的使用" class="headerlink" title="今天主要是记录一下学习Redux的使用"></a>今天主要是记录一下学习Redux的使用</h2><p>redux数据是单项流动的，视图通过dispatch一个action来改变state 数据，数据改变之后重新渲染视图</p>
+<p>redux 是一个全局状态管理插件，在我们的项目生成一棵唯一的状态树。redux不一定非要和react进行协作开发，redux如果要和react进行结合开发需要使用插件react-redux</p>
+<h5 id="redux安装"><a href="#redux安装" class="headerlink" title="redux安装"></a>redux安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i redux --save-dev</span><br><span class="line">或者</span><br><span class="line">yarn add redux</span><br></pre></td></tr></table></figure>
+
+<h5 id="redux简单-这个简单是胡扯的嗷-的例子"><a href="#redux简单-这个简单是胡扯的嗷-的例子" class="headerlink" title="redux简单(这个简单是胡扯的嗷)的例子"></a>redux简单(这个简单是胡扯的嗷)的例子</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入插件里面的方法</span></span><br><span class="line"><span class="keyword">import</span> &#123;createStore&#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</span><br><span class="line"><span class="comment">//参数1表示状态数据，可以设置默认的值</span></span><br><span class="line"><span class="comment">//参数2表示已什么方式修改数据，action必须要包含type属性，表示修改数据的方法</span></span><br><span class="line"><span class="keyword">const</span> counterReducer=<span class="function">(<span class="params">state=&#123;count:<span class="number">1</span>&#125;,action</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(action);</span><br><span class="line">    <span class="keyword">switch</span>(action.type)&#123;<span class="comment">//根据dispatch派发的事件类型，决定对数据做不同的操作。</span></span><br><span class="line">        <span class="keyword">case</span> <span class="string">'plus'</span>:</span><br><span class="line">            <span class="keyword">return</span> &#123;...state,...&#123;<span class="attr">count</span>:state.count + action.payload.step&#125;&#125;;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'jian'</span>:</span><br><span class="line">            <span class="keyword">return</span> &#123;...state,...&#123;<span class="attr">count</span>:state.count <span class="number">-1</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">default</span>:   </span><br><span class="line">            <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> store=createStore(counterReducer);</span><br><span class="line"><span class="comment">//redux里如果需要改变数据，得需要通过dispatch派发一个action进行</span></span><br><span class="line">store.dispatch(&#123;</span><br><span class="line">    type:<span class="string">'plus'</span>,<span class="comment">//派发的事件的类型，决定对数据做何种操作</span></span><br><span class="line">    playload:&#123;<span class="comment">//载荷，是action中传递的数据</span></span><br><span class="line">        step:<span class="number">2</span>,</span><br><span class="line">        disc:<span class="string">'我要加2'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> counterReducer;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在组件里面使用全局共享数据</span></span><br><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">'react-redux'</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LabelCount</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props)&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">const</span> &#123;count&#125;=<span class="keyword">this</span>.props;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;h1&gt;我是另一个组件&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">                &lt;h2&gt;当前的计数值为:&#123;count&#125;&lt;/</span>h2&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">export default  connect(state=&gt;state.count)(LabelCount);</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="redux做异步操作获取数据"><a href="#redux做异步操作获取数据" class="headerlink" title="redux做异步操作获取数据"></a>redux做异步操作获取数据</h3><p>此时需要利用插件redux-thunk<br>插件安装如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install redux-thunk --save-dev</span><br><span class="line">或者</span><br><span class="line">yarn add redux-thunk</span><br></pre></td></tr></table></figure>
+
+<h5 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">创建实例，并加载一个loadData方法存数据</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (state=&#123;<span class="attr">list</span>:[]&#125;,action)=&gt;&#123;</span><br><span class="line">    <span class="keyword">switch</span>(action.type)&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'loadData'</span>:</span><br><span class="line">            <span class="keyword">return</span> &#123;...state,...&#123;<span class="attr">list</span>:action.payload&#125;&#125;;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//执行一个异步请求并派发loadData事件</span></span><br><span class="line"><span class="keyword">import</span> &#123;getHotMovies&#125; <span class="keyword">from</span> <span class="string">'../../services/movies'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> LoadataFormTime =<span class="function"><span class="params">params</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">dispatch</span>)</span>&#123;</span><br><span class="line">        getHotMovies().then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="comment">//这个方法是事先封装好的axios请求电影数据的函数，在获取成功之后，用dispatch派发一个loadData事件</span></span><br><span class="line">            dispatch(&#123;</span><br><span class="line">                 type:<span class="string">'loadData'</span>,</span><br><span class="line">                payload:res.data.ms,</span><br><span class="line">            &#125;)</span><br><span class="line">           </span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果要用按钮触发dispatch则需要这么写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;()=&gt;dispatch(LoadataFormTime())&#125;&gt;加载数据&lt;/button&gt;</span><br><span class="line">//按钮触发这个函数获取数据并触发dispatch派发loadData事件，将获取到的数据存进state中的list</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//挂载组建的时候，必须要用Provider引入全局的store</span><br><span class="line">ReactDOM.render(&lt;Provider store=&#123;store&#125;&gt;&lt;App /&gt;&lt;/Provider&gt;, document.getElementById(&apos;root&apos;));</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/2018/04/05/vuex/" class="next-post btn btn-default" title='vuex'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            vuex</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'en'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#今天主要是记录一下学习Redux的使用"><span class="toc-text">今天主要是记录一下学习Redux的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#redux安装"><span class="toc-text">redux安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#redux简单-这个简单是胡扯的嗷-的例子"><span class="toc-text">redux简单(这个简单是胡扯的嗷)的例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redux做异步操作获取数据"><span class="toc-text">redux做异步操作获取数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#例子"><span class="toc-text">例子</span></a></li></ol></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>
